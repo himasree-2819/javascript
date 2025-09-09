@@ -6,4 +6,5 @@ Predefined function built-in function
 . Timesaving
 . Increses code Readability
 . Optimize in reliable
+.accuracy and performance
 Functions:string math
