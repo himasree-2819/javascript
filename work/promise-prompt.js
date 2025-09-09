@@ -2,7 +2,7 @@ let myPromise = new Promise((resolve, reject) => {
     let success = true; // try changing to false
 
     if (success) {
-        resolve("✅ Promise fulfilled!");
+        resolve("✅ Promise successfull!");
     } else {
         reject("❌ Promise rejected!");
     }
