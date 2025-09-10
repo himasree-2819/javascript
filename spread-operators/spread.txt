@@ -1,0 +1,2 @@
+// spread operators in js used to spread out the elements of an array or a properties of an Object
+//array elementsinte exact copy
