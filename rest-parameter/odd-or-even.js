@@ -8,5 +8,4 @@ function checkOddEven(...numbers) {
   });
 }
 
-// Example usage
-checkOddEven(1, 2, 3, 4, 5, 6);
+checkOddEven(3, 4, 9, 8, 10, 13);

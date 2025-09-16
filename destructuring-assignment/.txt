@@ -1,0 +1,3 @@
+Destructuring assignment in JavaScript is a way to unpack values from arrays or properties from objects into separate variables. It makes code shorter and easier to read.
+
+ da is a js feature that allows due to unpack values from array or properties into seperate variables.
