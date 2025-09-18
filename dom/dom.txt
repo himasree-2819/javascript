@@ -1,0 +1,37 @@
+DOM (Document Object Model) is a programming interface that represents an HTML or XML document as a tree structure
+.it allows js to interact with and manipulate the structure and style and the content of the webpage
+Each element (tag), attribute, and piece of text in the HTML is represented as a node in this tree.
+With DOM, JavaScript can access, change, add, or delete elements in a webpage dynamically.
+
+What is a Programming Interface?
+A Programming Interface is a way for different programs, modules, or systems to communicate with each other.
+It provides a set of tools, rules, methods, or functions that developers can use instead of dealing with internal details. that allows interact with document 
+
+<div>
+
+<div>
+</div>
+(parent)
+
+<div>
+</div>
+(child)
+
+
+</div>
+
+(tree structure)
+
+Accessing DOM Elements
+
+JavaScript gives methods to select elements from the DOM tree.read,get,delete
+
+Manipulating DOM Elements
+
+Once accessed, we can change, add, or remove elements.
+
+Access = find the element (like picking it from the tree).
+
+Manipulate = modify or update it (text, style, structure).
+
+

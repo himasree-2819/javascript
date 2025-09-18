@@ -1,0 +1,3 @@
+form of key–value pairs.(object)
+An array is a special type of object used to store multiple values in a single variable.(array)
+An array is a special type of object used to store multiple values in a single variable.

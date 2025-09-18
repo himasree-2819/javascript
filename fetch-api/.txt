@@ -1,0 +1,5 @@
+What is Fetch API?
+
+Fetch API is used in JavaScript to make HTTP requests (like GET, POST, PUT, DELETE) to servers.
+
+It returns a Promise that resolves to the response.
