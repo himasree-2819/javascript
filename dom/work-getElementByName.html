@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>getElementsByName Example</title>
+</head>
+<body>
+  <h2>Choose your favorite language:</h2>
+
+  <input type="radio" name="language" value="HTML"> HTML <br>
+  <input type="radio" name="language" value="CSS"> CSS <br>
+  <input type="radio" name="language" value="JavaScript"> JavaScript <br><br>
+
+  <button onclick="showSelected()">Show Selected</button>
+
+  <p id="result"></p>
+
+  <script>
+    function showSelected() {
+      let langs = document.getElementsByName("language"); // get all inputs with name="language"
+      let selected = "";
+
+      for (let i = 0; i < langs.length; i++) {
+        if (langs[i].checked) {
+          selected = langs[i].value;
+        }
+      }
+
+      document.getElementById("result").innerText = "You selected: " + selected;
+    }
+  </script>
+</body>
+</html>

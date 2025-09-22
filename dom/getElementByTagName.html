@@ -1,0 +1,32 @@
+<!-- getElementsByTagName() -->
+
+<!-- Selects elements by their tag name (like p, div, h1). -->
+
+<!-- //select all element with a specific htmltag -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>paragraph</p>
+    <p>paragraph</p>
+    <p>paragraph</p>
+    <h1>heading</h1>
+
+    <script>
+        const paragraph = document.getElementsByTagName("p");
+        console.log(paragraph);
+        
+        for(let i = 0; i < paragraph.length; i++){
+            paragraph[i].style.color="magenta";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>getElementsByName with Checkboxes</title>
+</head>
+<body>
+  <h2>Select your favorite fruits:</h2>
+
+  <input type="checkbox" name="fruit" value="Apple"> Apple <br>
+  <input type="checkbox" name="fruit" value="Banana"> Banana <br>
+  <input type="checkbox" name="fruit" value="Mango"> Mango <br>
+  <input type="checkbox" name="fruit" value="Orange"> Orange <br><br>
+
+  <button onclick="showFruits()">Show Selected Fruits</button>
+
+  <p id="result"></p>
+
+  <script>
+    function showFruits() {
+      let fruits = document.getElementsByName("fruit"); 
+      let selected = [];
+
+      for (let i = 0; i < fruits.length; i++) {
+        if (fruits[i].checked) {
+          selected.push(fruits[i].value);
+        }
+      }
+
+      document.getElementById("result").innerText =
+        "You selected: " + (selected.length > 0 ? selected.join(", ") : "None");
+    }
+  </script>
+</body>
+</html>
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>getElementsByName Example</title>
+</head>
+<body>
+  <h2>User Information</h2>
+
+  <label>Name:</label>
+  <input type="text" name="info"><br><br>
+
+  <label>Email:</label>
+  <input type="text" name="info"><br><br>
+
+  <label>Age:</label>
+  <input type="text" name="info"><br><br>
+
+  <button onclick="showInfo()">Submit</button>
+
+  <p id="result"></p>
+
+  <script>
+    function showInfo() {
+      let inputs = document.getElementsByName("info"); // all inputs with name="info"
+      let name = inputs[0].value;
+      let email = inputs[1].value;
+      let age = inputs[2].value;
+
+      document.getElementById("result").innerText =
+        "Name: " + name + "\nEmail: " + email + "\nAge: " + age;
+    }
+  </script>
+</body>
+</html> -->

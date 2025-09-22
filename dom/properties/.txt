@@ -1,0 +1,19 @@
+textContent,innertext,innerhtml
+text-content:
+textContent is a DOM property in JavaScript that is used to get or set the text inside an HTML element.
+
+innerText
+
+Shows/sets the visible text inside an element.
+
+Ignores hidden text (like display:none).
+
+Slightly slower, because it checks the CSS visibility.
+
+innerHTML
+
+Shows/sets the HTML code inside an element.
+
+Returns text with tags.
+
+Can insert HTML elements (parsed as real HTML).
