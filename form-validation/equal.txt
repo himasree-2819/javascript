@@ -1,0 +1,11 @@
+Equal To (==)
+
+Compares values only.
+
+It does type conversion automatically (also called type coercion).
+
+Strictly Equal To (===)
+
+Compares values AND types.
+
+No type conversion happens.

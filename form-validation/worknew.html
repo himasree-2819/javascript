@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title style="font-family: Georgia, 'Times New Roman', Times, serif;">Spa Client Intake Form </title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #d426bd, #2c07b4);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .form-container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 12px;
+      width: 400px;
+    }
+    h2 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 6px;
+    }
+    input:invalid {
+      border: 2px solid red;
+    }
+    input:valid {
+      border: 2px solid green;
+    }
+    .error {
+      color: #ff6961;
+      font-size: 13px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #ff4d6d;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Spa Client Intake Form</h2>
+    <form id="spaForm" novalidate>
+      <label>First Name
+        <input type="text" id="firstName" required>
+        <span class="error" id="firstNameError"></span>
+      </label>
+
+      <label>Last Name
+        <input type="text" id="lastName" required>
+        <span class="error" id="lastNameError"></span>
+      </label>
+
+      <label>Phone
+        <input type="tel" id="phone" required pattern="[0-9]{10}">
+        <span class="error" id="phoneError"></span>
+      </label>
+
+      <label>Email
+        <input type="email" id="email" required>
+        <span class="error" id="emailError"></span>
+      </label>
+
+      <label>Street Address
+        <input type="text" id="address" required>
+        <span class="error" id="addressError"></span>
+      </label>
+
+      <label>City
+        <input type="text" id="city" required>
+        <span class="error" id="cityError"></span>
+      </label>
+
+      <label>Postal Code
+        <input type="text" id="zip" required pattern="[0-9]{5,6}">
+        <span class="error" id="zipError"></span>
+      </label>
+
+      <button type="submit">Next</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("spaForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      let isValid = true;
+
+      function checkField(id, errorId, message) {
+        const field = document.getElementById(id);
+        const error = document.getElementById(errorId);
+        if (!field.checkValidity()) {
+          error.textContent = message;
+          isValid = false;
+        } else {
+          error.textContent = "";
+        }
+      }
+
+      checkField("firstName", "firstNameError", "First name is required");
+      checkField("lastName", "lastNameError", "Last name is required");
+      checkField("phone", "phoneError", "Enter valid 10-digit phone number");
+      checkField("email", "emailError", "Enter a valid email address");
+      checkField("address", "addressError", "Address is required");
+      checkField("city", "cityError", "City is required");
+      checkField("zip", "zipError", "Enter valid postal code");
+
+      if (isValid) {
+        alert("Form submitted successfully!");
+        this.submit();
+      }
+    });
+  </script>
+</body>
+</html>
+

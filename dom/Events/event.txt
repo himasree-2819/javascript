@@ -1,0 +1,13 @@
+An event is an action or occurance that happens in the browse
+Eg:- A user clicking a button,hover the mouse,form submission,input
+In the event(interact to dom )is convert to dynamic!
+event listeners 
+an  Event listeners is a function in js that wait for an event to occure on html element and then executes code in response 
+An Event Listener is a function in JavaScript that waits for a specific event (like a click, hover, keypress, etc.) to happen on an element, and then runs some code when that event occurs.
+.to ame the website interactive
+.to seperate html and js
+
+What is Event Handling?
+
+👉 Event handling means detecting an event (like click, keypress, submit) and then executing some code in response.
+waiting js code that will run when a specific event occure.

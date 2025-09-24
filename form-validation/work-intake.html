@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spa Client Intake Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #4b0082, #8a2be2);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      border-radius: 20px;
+      width: 450px;
+    }
+    h1 {
+      text-align: center;
+      color: #ff69b4;
+    }
+    .tab {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+    .tab button {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      padding: 20px;
+    }
+    .tab .active {
+      border-bottom: 2px solid #ff69b4;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    .form-group input.invalid {
+      border: 2px solid #ff0000;
+    }
+    button[type="submit"] {
+      background-color: #ff69b4;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button[type="submit"]:hover {
+      background-color: #ff1493;
+    }
+    .error {
+      color: #ff0000;
+      font-size: 12px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Spa Client Intake Form</h1>
+    <div class="tab">
+      <button class="tablinks active" onclick="openTab(event, 'ClientDetails')">Client Details</button>
+      <button class="tablinks" onclick="openTab(event, 'EmergencyContact')">Emergency Contact Details</button>
+      <button class="tablinks" onclick="openTab(event, 'ServicesCheckout')">Services & Checkout</button>
+    </div>
+
+    <div id="ClientDetails" class="tabcontent" style="display: block;">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" id="firstName" placeholder="First Name"><br><br>
+        <input type="text" id="lastName" placeholder="Last Name">
+        <span class="error" id="nameError">Please enter both first and last name.</span>
+      </div>
+      <div class="form-group">
+        <label>Phone</label>
+        <input type="tel" id="phone" placeholder="Phone">
+        <span class="error" id="phoneError">Please enter a valid phone number.</span>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Email">
+        <span class="error" id="emailError">Please enter a valid email address.</span>
+      </div>
+      <div class="form-group">
+        <label>Address</label>
+        <input type="text" id="streetAddress" placeholder="Street Address"><br><br>
+        <input type="text" id="addressLine2" placeholder="Address Line 2"><br><br>
+        <input type="text" id="city" placeholder="City"><br><br>
+        <input type="text" id="state" placeholder="State/Region/Province"><br><br>
+        <input type="text" id="zip" placeholder="Postal/Zip Code"><br><br>
+        <input type="text" id="country" placeholder="Country"><br><br>
+        <span class="error" id="addressError">Please fill all address fields.</span>
+      </div>
+      <button type="submit" onclick="validateForm()">Next</button>
+    </div>
+
+    <!-- Add other tabs here if needed -->
+
+  </div>
+
+  <script>
+    function openTab(evt, tabName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(tabName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+
+    function validateForm() {
+      let isValid = true;
+
+      // Validate Name
+      const firstName = document.getElementById('firstName').value;
+      const lastName = document.getElementById('lastName').value;
+      if (!firstName || !lastName) {
+        document.getElementById('nameError').style.display = 'block';
+        document.getElementById('firstName').classList.add('invalid');
+        document.getElementById('lastName').classList.add('invalid');
+        isValid = false;
+      } else {
+        document.getElementById('nameError').style.display = 'none';
+        document.getElementById('firstName').classList.remove('invalid');
+        document.getElementById('lastName').classList.remove('invalid');
+      }
+
+      // Validate Phone
+      const phone = document.getElementById('phone').value;
+      const phoneRegex = /^\d{10}$/;
+      if (!phoneRegex.test(phone)) {
+        document.getElementById('phoneError').style.display = 'block';
+        document.getElementById('phone').classList.add('invalid');
+        isValid = false;
+      } else {
+        document.getElementById('phoneError').style.display = 'none';
+        document.getElementById('phone').classList.remove('invalid');
+      }
+
+      // Validate Email
+      const email = document.getElementById('email').value;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        document.getElementById('emailError').style.display = 'block';
+        document.getElementById('email').classList.add('invalid');
+        isValid = false;
+      } else {
+        document.getElementById('emailError').style.display = 'none';
+        document.getElementById('email').classList.remove('invalid');
+      }
+
+      // Validate Address
+      const streetAddress = document.getElementById('streetAddress').value;
+      const addressLine2 = document.getElementById('addressLine2').value;
+      const city = document.getElementById('city').value;
+      const state = document.getElementById('state').value;
+      const zip = document.getElementById('zip').value;
+      const country = document.getElementById('country').value;
+      if (!streetAddress || !city || !state || !zip || !country) {
+        document.getElementById('addressError').style.display = 'block';
+        document.getElementById('streetAddress').classList.add('invalid');
+        document.getElementById('addressLine2').classList.add('invalid');
+        document.getElementById('city').classList.add('invalid');
+        document.getElementById('state').classList.add('invalid');
+        document.getElementById('zip').classList.add('invalid');
+        document.getElementById('country').classList.add('invalid');
+        isValid = false;
+      } else {
+        document.getElementById('addressError').style.display = 'none';
+        document.getElementById('streetAddress').classList.remove('invalid');
+        document.getElementById('addressLine2').classList.remove('invalid');
+        document.getElementById('city').classList.remove('invalid');
+        document.getElementById('state').classList.remove('invalid');
+        document.getElementById('zip').classList.remove('invalid');
+        document.getElementById('country').classList.remove('invalid');
+      }
+
+      if (isValid) {
+        openTab(event, 'EmergencyContact');
+      }
+    }
+  </script>
+</body>
+</html>
