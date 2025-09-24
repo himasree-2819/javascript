@@ -1,0 +1,62 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="name">
+
+<script>
+  document.getElementById("name").addEventListener("change", function() {
+    alert("Text changed to: " + this.value);
+  });
+</script>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="myForm">
+  <!-- Text input for select event -->
+  Name: <input type="text" id="name" value="Hello User"><br><br>
+
+  <!-- Dropdown for change event -->
+  Choose City:
+  <select id="city">
+    <option value="">Select</option>
+    <option value="kochi">Kochi</option>
+    <option value="calicut">Calicut</option>
+    <option value="trivandrum">Trivandrum</option>
+  </select><br><br>
+
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  // select event: triggered when user selects text inside input
+  document.getElementById("name").addEventListener("select", function() {
+    alert("You selected some text in the Name field!");
+  });
+
+  // change event: triggered when dropdown value changes
+  document.getElementById("city").addEventListener("change", function() {
+    alert("You selected: " + this.value);
+  });
+
+  // submit event for the form
+  document.getElementById("myForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    alert("Form submitted successfully!");
+  });
+</script>
+
+</body>
+</html>
