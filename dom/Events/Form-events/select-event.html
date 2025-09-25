@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Select Event Example</title>
 </head>
 <body>
-    <input type="text" id="txt" value="Hello World">
-
-<script>
-  document.getElementById("txt").addEventListener("select", function() {
-    alert("You selected some text!");
-  });
-</script>
-
+	<h2>Select Event Example</h2>
+	<select id="fruitSelect">
+		<option value="">Choose a fruit</option>
+		<option value="apple">Apple</option>
+		<option value="banana">Banana</option>
+		<option value="orange">Orange</option>
+	</select>
+	<p id="output"></p>
+	<script>
+		const select = document.getElementById('fruitSelect');
+		const output = document.getElementById('output');
+		select.addEventListener('change', function() {
+			output.textContent = 'You selected: ' + select.value;
+		});
+	</script>
 </body>
 </html>
