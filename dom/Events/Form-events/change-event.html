@@ -1,5 +1,5 @@
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -36,5 +36,36 @@
   });
 </script>
 
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change Event Example</title>
+</head>
+<body>
+  <h2>Change Event Example</h2>
+
+  <label for="colorSelect">Choose a color:</label>
+  <select id="colorSelect">
+    <option value="">--Select--</option>
+    <option value="red">Red</option>
+    <option value="green">Green</option>
+    <option value="blue">Blue</option>
+  </select>
+
+  <p id="result"></p>
+
+  <script>
+    const selectElement = document.getElementById("colorSelect");
+    const result = document.getElementById("result");
+
+    selectElement.addEventListener("change", function() {
+      result.textContent = "You selected: " + selectElement.value;
+      result.style.color = selectElement.value;  // changes text color
+    });
+  </script>
 </body>
 </html>
