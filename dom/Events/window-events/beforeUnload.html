@@ -1,0 +1,30 @@
+<!-- The beforeunload event belongs to the Window events. -->
+
+<!-- It triggers just before a page is unloaded — i.e., when the user tries to: -->
+
+<!-- close the tab/window, -->
+
+<!-- refresh the page, or -->
+
+<!-- navigate to another page. -->
+
+<!-- It’s mostly used to warn the user before leaving the page (e.g., if there’s unsaved data). -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>BeforeUnload Event</h2>
+    <p>try to reload or close the page</p>
+
+    <script>
+        window.addEventListener("beforeunload",(event) =>{
+            event.preventDefault();
+            event.returnValue = '';
+        })
+    </script>
+</body>
+</html>

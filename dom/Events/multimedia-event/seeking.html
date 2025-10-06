@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multimedia Events Demo</title>
+  <style>
+    video { max-width: 100%; }
+    #status, #events { margin: 10px; }
+    #events { max-height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; }
+  </style>
+</head>
+<body>
+  <video id="video" controls>
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div id="status">Checking connection...</div>
+  <div id="events">Event log:<br></div>
+  <button id="toggleVolume">Toggle Mute</button>
+
+  <script>
+    const video = document.getElementById('video');
+    const statusDiv = document.getElementById('status');
+    const eventsDiv = document.getElementById('events');
+    const toggleVolumeBtn = document.getElementById('toggleVolume');
+
+    // Log events to the UI
+    function logEvent(message) {
+      const p = document.createElement('p');
+      p.textContent = `${new Date().toLocaleTimeString()}: ${message}`;
+      eventsDiv.appendChild(p);
+      eventsDiv.scrollTop = eventsDiv.scrollHeight; // Auto-scroll
+    }
+
+    // Update network status
+    function updateStatus(isOnline) {
+      statusDiv.textContent = isOnline ? 'Online!' : 'Offline – Check your connection.';
+      statusDiv.style.color = isOnline ? 'green' : 'red';
+    }
+
+    // Multimedia event listeners
+    video.addEventListener('seeking', () => {
+      logEvent(`Seeking to ${video.currentTime.toFixed(2)} seconds`);
+    });
+
+    video.addEventListener('seeked', () => {
+      logEvent(`Seeked to ${video.currentTime.toFixed(2)} seconds`);
+    });
+
+    video.addEventListener('loadedmetadata', () => {
+      logEvent(`Metadata loaded: Duration ${video.duration.toFixed(2)} seconds`);
+    });
+
+    video.addEventListener('canplay', () => {
+      logEvent('Can play: Enough data buffered to start playback');
+    });
+
+    video.addEventListener('error', (event) => {
+      const error = video.error;
+      const errorMessage = error ? `Media error: ${error.message} (Code: ${error.code})` : 'Unknown media error';
+      logEvent(errorMessage);
+      if (!navigator.onLine) {
+        logEvent('Network offline – Please reconnect.');
+      }
+    });
+
+    video.addEventListener('volumechange', () => {
+      logEvent(`Volume changed: ${video.volume.toFixed(2)} (Muted: ${video.muted})`);
+    });
+
+    // Network status listeners
+    window.addEventListener('online', () => {
+      updateStatus(true);
+      logEvent('Network reconnected. Attempting to reload media...');
+      video.load(); // Reload video on reconnect
+    });
+
+    window.addEventListener('offline', () => {
+      updateStatus(false);
+      logEvent('Network disconnected. Playback may be affected.');
+    });
+
+    // Toggle mute button
+    toggleVolumeBtn.addEventListener('click', () => {
+      video.muted = !video.muted;
+    });
+
+    // Set initial network status
+    updateStatus(navigator.onLine);
+
+    // Handle global errors for completeness
+    window.addEventListener('error', (event) => {
+      logEvent(`Global error: ${event.message} at ${event.filename}:${event.lineno}`);
+    });
+  </script>
+</body>
+</html>

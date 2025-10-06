@@ -1,0 +1,29 @@
+submit
+
+.Triggered when a form is submitted.
+
+Example: Checking if inputs are valid before sending.
+
+reset
+
+.Triggered when a form is reset (clears inputs to default values).
+
+change
+
+.Fired when the value of an input, select, or textarea changes and loses focus.
+
+input
+
+.Fired immediately when the value of an input changes (without waiting for focus loss).
+
+focus
+
+.Triggered when a form field gets focus (clicked or tabbed into).
+
+blur
+
+.Triggered when a form field loses focus.
+
+select
+
+.Triggered when the user selects text inside an input or textarea.

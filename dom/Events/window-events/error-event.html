@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Error Event Demo</title>
+</head>
+<body>
+  <img id="myImage" src="fallback.jpg" alt="Test Image" width="200px">
+  <div id="status">Checking connection...</div>
+
+  <script>
+    const img = document.getElementById('myImage');
+    const statusDiv = document.getElementById('status');
+
+    // Handle image load error
+    img.addEventListener('error', (event) => {
+      console.error('Image failed to load:', event);
+      img.src = 'fallback.jpg'; // Fallback image
+      img.alt = 'Fallback Image';
+      statusDiv.textContent = 'Image failed to load. Using fallback.';
+    });
+
+    // Update connectivity status
+    function updateStatus(isOnline) {
+      statusDiv.textContent = isOnline ? 'Online!' : 'Offline – Check your connection.';
+      statusDiv.style.color = isOnline ? 'green' : 'red';
+    }
+
+    // Listen for online/offline events
+    window.addEventListener('online', () => updateStatus(true));
+    window.addEventListener('offline', () => updateStatus(false));
+
+    // Set initial status
+    updateStatus(navigator.onLine);
+  </script>
+</body>
+</html>

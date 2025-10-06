@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Unload event</h2>
+    <iframe id="iframeChild" src="child.html" frameborder="1"></iframe>
+    <button id="btnRemoveChild">Remove child.html</button>
+
+    <script>
+        const btnRemoveChild = document.getElementById("btnRemoveChild");
+        btnRemoveChild.addEventListener("click", function(){
+             const iframeChild = document.getElementById("iframeChild");
+             iframeChild.src = ""
+        });
+
+    </script>
+</body>
+</html>

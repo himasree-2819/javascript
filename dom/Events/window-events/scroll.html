@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Scroll Events</h2>
+    <p id="msg">Scroll down...</p>
+
+    <script>
+        window.addEventListener("scroll",() =>{
+            document.getElementById("msg").textContent = 
+            "scrolled position : " + window.scrollY ;
+            
+        })
+    </script>
+</body>
+</html>

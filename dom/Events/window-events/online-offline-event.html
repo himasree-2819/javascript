@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Online/Offline</title>
+</head>
+<body>
+  <div id="status">Checking connection...</div>
+
+  <script>
+    const statusDiv = document.getElementById('status');
+
+    function updateStatus(isOnline) {
+      statusDiv.textContent = isOnline ? 'Online!' : 'Offline – Please check your connection.';
+      statusDiv.style.color = isOnline ? 'green' : 'red';
+    }
+
+    // Listen for online event
+    window.addEventListener('online', () => {
+      updateStatus(true);
+    });
+
+    // Listen for offline event (for completeness)
+    window.addEventListener('offline', () => {
+      updateStatus(false);
+    });
+
+    // Set initial status
+    updateStatus(navigator.onLine);
+  </script>
+</body>
+</html>
